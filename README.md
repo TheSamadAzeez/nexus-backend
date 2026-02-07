@@ -168,13 +168,16 @@ This creates:
 
 To create your own admin user account:
 
+```bash
 pnpm db:create-admin
-
 ```
 
 see more info creating an admin user (see [Creating an Admin User](#-creating-an-admin-user) section)
 
 ### Step 7: Start the Development Server
+
+```bash
+pnpm start:dev
 ```
 
 The API will be available at `http://localhost:3000`
