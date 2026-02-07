@@ -166,10 +166,15 @@ This creates:
 - **Test User**: `user@nexus.com` / `user123`
 - **33 Sample Products** across categories: Electronics, Footwear, Clothing, Accessories, Watches, Gaming
 
-### Step 7: Start the Development Server
+To create your own admin user account:
 
-```bash
-pnpm start:dev
+pnpm db:create-admin
+
+```
+
+see more info creating an admin user (see [Creating an Admin User](#-creating-an-admin-user) section)
+
+### Step 7: Start the Development Server
 ```
 
 The API will be available at `http://localhost:3000`
