@@ -170,8 +170,10 @@ src/
 pnpm start:dev     # Development server
 pnpm build         # Build for production
 pnpm start:prod    # Production server
-pnpm drizzle-kit push  # Push schema to DB
-pnpm tsx seed.ts   # Seed database
+pnpm db:push  # Push schema to DB
+pnpm db:seed   # Seed database
+pnpm db:studio   # Open Drizzle Studio to view database
+pnpm db:create-admin # create a new admin user
 ```
 
 ## License
