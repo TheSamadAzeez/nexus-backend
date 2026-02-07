@@ -172,7 +172,7 @@ To create your own admin user account:
 pnpm db:create-admin
 ```
 
-For more info on creating an admin user, see the [Creating Admin Users](#creating-admin-users) section below.
+For more info on creating an admin user, see the [Creating Admin Users](#-creating-admin-users) section below.
 
 ### Step 7: Start the Development Server
 
