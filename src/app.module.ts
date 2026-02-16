@@ -34,13 +34,14 @@ import { AppService } from './app.service';
     // Configuration
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConfig],
+      load: [databaseConfig], // Load database configuration
     }),
 
     // Database
     DatabaseModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
+        // UseFactory is a function that returns an object, in this case, it returns the database configuration
         host: configService.get('database.host')!,
         port: configService.get('database.port')!,
         user: configService.get('database.user')!,
@@ -75,7 +76,7 @@ import { AppService } from './app.service';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         store: await redisStore({
-          host: configService.get<string>('REDIS_HOST', 'localhost'),
+          host: configService.get<string>('REDIS_HOST', 'localhost'), // <string> is used to specify the type of the variable that is being returned by the get() method
           port: configService.get<number>('REDIS_PORT', 6379),
         }),
         ttl: 60000, // 60 seconds default TTL

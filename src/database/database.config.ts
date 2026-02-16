@@ -9,7 +9,7 @@ const databaseConfigSchema = z.object({
   database: z.string(),
 });
 
-export type DatabaseConfig = z.infer<typeof databaseConfigSchema>;
+export type DatabaseConfig = z.infer<typeof databaseConfigSchema>; // Export the DatabaseConfig type, z.infer is used to infer the type of the database configuration
 
 export default registerAs('database', (): DatabaseConfig => {
   const config = {
@@ -20,5 +20,5 @@ export default registerAs('database', (): DatabaseConfig => {
     database: process.env.POSTGRES_DB,
   };
 
-  return databaseConfigSchema.parse(config);
+  return databaseConfigSchema.parse(config); // Parse the config object to ensure it matches the schema, parse() is a Zod method that validates the config object against the schema, if the config is invalid, it will throw an error
 });
