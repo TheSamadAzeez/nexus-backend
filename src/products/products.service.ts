@@ -31,7 +31,7 @@ export class ProductsService {
     const conditions: any[] = [];
 
     if (cursor) {
-      conditions.push(gt(products.id, cursor));
+      conditions.push(gt(products.id, cursor)); //products.id is coming from the drizzleService.db.select().from(products)
     }
 
     if (category) {
@@ -39,7 +39,7 @@ export class ProductsService {
     }
 
     if (search) {
-      conditions.push(ilike(products.name, `%${search}%`));
+      conditions.push(ilike(products.name, `%${search}%`)); //ilike is a case-insensitive like operator % is a wildcard character that matches any sequence of zero or more characters
     }
 
     if (minPrice !== undefined) {
@@ -50,18 +50,18 @@ export class ProductsService {
       conditions.push(lte(products.price, maxPrice.toString()));
     }
 
-    const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+    const whereClause = conditions.length > 0 ? and(...conditions) : undefined; // and() is a function that returns a boolean expression that is true if all of the conditions are true
 
     const items = await this.drizzleService.db
       .select()
       .from(products)
       .where(whereClause)
       .orderBy(products.id)
-      .limit(limit + 1);
+      .limit(limit + 1); //limit + 1 is used to check if there is a next page
 
-    const hasMore = items.length > limit;
+    const hasMore = items.length > limit; //hasMore is true if there are more items than the limit
     const data = hasMore ? items.slice(0, -1) : items;
-    const nextCursor = hasMore ? data[data.length - 1]?.id : null;
+    const nextCursor = hasMore ? data[data.length - 1]?.id : null; //nextCursor is the id of the last item if hasMore is true
 
     return {
       data,
